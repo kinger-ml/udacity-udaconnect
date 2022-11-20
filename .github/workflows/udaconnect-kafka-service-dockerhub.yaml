@@ -30,8 +30,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: Dockerfile
+          context: ./modules/kafka_service
+          file: ./modules/kafka_service/Dockerfile
           platforms: linux/amd64
           push: true
           tags: kkinger/udaconnect-kafka-service:latest

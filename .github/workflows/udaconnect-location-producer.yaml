@@ -30,8 +30,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: Dockerfile
+          context: ./modules/location_producer
+          file: ./modules/location_producer/Dockerfile
           platforms: linux/amd64
           push: true
           tags: kkinger/udaconnect-locations-producer:latest
