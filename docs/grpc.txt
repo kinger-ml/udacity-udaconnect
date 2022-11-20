@@ -1,0 +1,11 @@
+The location message as specified in location.proto file is:
+'''
+message LocationMessage {
+    int32 person_id = 1;
+    string latitude = 2;
+    string longitude = 3;
+}
+'''
+
+To send test-samples open a shell for location-producer pod and run:
+python demo_client_app.py

@@ -1,0 +1,12 @@
+Justifications for architecture design and selection of Message Passing technique shown in docs/design.jpg
+
+1. For handling large volumes of data, the monolith applicaiton has been migrated to microservice architecture with three major components:
+a. Persons
+b. Connections
+c. Locations
+d. FrontEnd
+
+2. Message Passing techniques: Following message passing techniques have been adopted for communication between the microservices:
+a. Since mobile device produces large number of requests with location data, gRPC is adopted. gRPC being light-weight is suitable solution for the network-constrained environment like mobile devices.
+b. FrontEnd uses REST APIs for communication with Persons and Connections as they have high reliability and throughput. Also this makes the interface between the services simpler and straight-forward.
+c. Kafka is used for consuming the locaiton data. This ensures that location data generated in large volumes is not lost and consumed with high reliability and in an asynchronous way. This also reduces the coupling between producer and consumer service.

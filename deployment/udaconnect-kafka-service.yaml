@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: udaconnect-kafka-service
+  name: udaconnect-kafka-service
+spec:
+  selector:
+    service: udaconnect-kafka-service
+  type: ClusterIP
+  ports:
+  - name: "zookeeper"
+    port: 5010
+    targetPort: 5010
+  - name: "server"
+    port: 5011
+    targetPort: 5011
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: udaconnect-kafka-service
+  name: udaconnect-kafka-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: udaconnect-kafka-service
+  template:
+    metadata:
+      labels:
+        service: udaconnect-kafka-service
+    spec:
+      containers:
+      - image: kkinger/udaconnect-kafka-service:latest
+        name: udaconnect-kafka-zookeeper
+        command: ["sh", "/bin/zookeeper-server-start.sh", "/config/zookeeper.properties"]
+        ports:
+        - containerPort: 5010
+      - image: kkinger/udaconnect-kafka-service:latest
+        name: udaconnect-kafka-server
+        command: ["sh", "bin/kafka-server-start.sh", "/config/server.properties"]
+        ports:
+        - containerPort: 5011

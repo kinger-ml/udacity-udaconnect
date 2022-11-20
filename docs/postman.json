@@ -1,0 +1,67 @@
+{
+    "info": {
+        "_postman_id": "ed9724b7-17e0-4eec-8d32-e2ec5dd8aff7",
+        "name": "UdaConnect",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "24516649"
+    },
+    "item": [
+        {
+            "name": "Front end request",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:30000",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "30000"
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Persons API request",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:30002/api/persons",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "30002",
+                    "path": [
+                        "api",
+                        "persons"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Person<id> request",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:30002/api/persons/1",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "30002",
+                    "path": [
+                        "api",
+                        "persons",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}
